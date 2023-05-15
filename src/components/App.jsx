@@ -2,7 +2,7 @@ import { Section } from './Section';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Statistics } from './Statistics';
 import { Notification } from './Notification';
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 function App() {
 
@@ -14,6 +14,10 @@ function App() {
   const  handleReaction = reaction => {
       this.setState(state => ({ [reaction]: state[reaction] + 1 }));
     };
+
+const countTotalFeedback = () => {
+  return bad + good + neutral;
+};
 
 return (
       <div
@@ -38,23 +42,24 @@ return (
 
         <Section title="Statistics">
           <div>
-            {/* {!totalFeedback ? (
+            {!countTotalFeedback ? (
               <Notification message="There is no feedback" />
             ) : (
               <Statistics
                 good={good}
                 neutral={neutral}
                 bad={bad}
-                total={totalFeedback}
-                positivePercentage={positiveFeedbackPercentage} */}
-              {/* /> */}
-            {/* )} */}
-          </div>
+                total={countTotalFeedback()}
+                // positivePercentage={positiveFeedbackPercentage} }
+
+              />
+              )}
+        </div>
         </Section>
       </div>
-  );
+    );
 }
-//
+
 export default App;
 
 // class App extends Component {
