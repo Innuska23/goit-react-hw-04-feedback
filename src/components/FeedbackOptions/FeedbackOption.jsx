@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Reaction, Button, Span } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     function getColorByReaction(reaction, isButton) {
         switch (reaction) {
             case "good":
@@ -11,13 +11,12 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 
             default:
                 return isButton ? "#6c757d" : "#565e64";
+        }
     }
-}
     return (
-
         <Reaction>
             {options.map(reaction => (
-                <Button 
+                <Button
                     color={getColorByReaction(reaction)}
                     key={reaction}
                     onClick={() => onLeaveFeedback(reaction)}>
@@ -34,3 +33,5 @@ FeedbackOptions.propTypes = {
     onLeaveFeedback: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
+
+export default FeedbackOptions;
